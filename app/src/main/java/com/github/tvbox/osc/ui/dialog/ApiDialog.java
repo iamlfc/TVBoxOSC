@@ -8,8 +8,6 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import androidx.annotation.NonNull;
-
 import com.github.tvbox.osc.R;
 import com.github.tvbox.osc.event.RefreshEvent;
 import com.github.tvbox.osc.server.ControlManager;
@@ -28,6 +26,7 @@ import org.jetbrains.annotations.NotNull;
 import java.util.ArrayList;
 import java.util.List;
 
+import androidx.annotation.NonNull;
 import me.jessyan.autosize.utils.AutoSizeUtils;
 
 /**
@@ -76,8 +75,11 @@ public class ApiDialog extends BaseDialog {
             @Override
             public void onClick(View v) {
                 ArrayList<String> history = Hawk.get(HawkConfig.API_HISTORY, new ArrayList<String>());
-                if (history.isEmpty())
-                    return;
+                if (history.isEmpty()){
+                    history.add("https://ghproxy.com/https://raw.githubusercontent.com/iamlfc/TVBoxOSC/main/app/src/main/assets/tvbox.txt");
+                    history.add("https://maoyingshi.cc/tvbox/云星日记/1.m3u8");
+                }
+//                    return;
                 String current = Hawk.get(HawkConfig.API_URL, "");
                 int idx = 0;
                 if (history.contains(current))
