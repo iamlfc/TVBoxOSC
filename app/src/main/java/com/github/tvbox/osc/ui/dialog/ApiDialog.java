@@ -75,11 +75,12 @@ public class ApiDialog extends BaseDialog {
             @Override
             public void onClick(View v) {
                 ArrayList<String> history = Hawk.get(HawkConfig.API_HISTORY, new ArrayList<String>());
-                if (history.isEmpty()){
-                    history.add("https://ghproxy.com/https://raw.githubusercontent.com/iamlfc/TVBoxOSC/main/app/src/main/assets/tvbox.txt");
-                    history.add("https://maoyingshi.cc/tvbox/云星日记/1.m3u8");
-
-                }
+                String strUrl1 = "https://ghproxy.com/https://raw.githubusercontent.com/iamlfc/TVBoxOSC/main/app/src/main/assets/tvbox.txt";
+                String strUrl2 = "https://maoyingshi.cc/tvbox/云星日记/1.m3u8";
+                if (!history.contains(strUrl1))
+                    history.add(strUrl1);
+                if (!history.contains(strUrl2))
+                    history.add(strUrl2);
 //                    return;
                 String current = Hawk.get(HawkConfig.API_URL, "");
                 int idx = 0;
